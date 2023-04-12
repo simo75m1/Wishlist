@@ -16,7 +16,7 @@ CREATE TABLE `wishwebapp`.`wishlists` (
                                           UNIQUE INDEX `wishlist_ID_UNIQUE` (`wishlist_ID` ASC) VISIBLE);
 CREATE TABLE `wishwebapp`.`wishes` (
                                        `wishlist_ID` INT NOT NULL,
-                                       `wish_ID` INT NOT NULL,
+                                       `wish_ID` INT NOT NULL AUTO_INCREMENT,
                                        `product_name` VARCHAR(50) NOT NULL,
                                        `product_price` INT NULL,
                                        `product_link` VARCHAR(300) NULL,
