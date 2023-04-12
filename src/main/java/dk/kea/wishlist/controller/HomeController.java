@@ -11,7 +11,12 @@ import java.sql.SQLException;
 @Controller
 public class HomeController
 {
-    UserRepository userRepo = new UserRepository();
+    private UserRepository userRepo;
+
+    public HomeController(UserRepository userRepo)
+    {
+        this.userRepo = userRepo;
+    }
     @GetMapping("/")
     public String showFrontpage()
     {
