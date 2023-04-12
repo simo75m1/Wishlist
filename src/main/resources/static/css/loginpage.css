@@ -1,0 +1,46 @@
+#login-background
+{
+    display:flex;
+    justify-content: center;
+    height:700px;
+    border:2px solid red;
+}
+#login-box
+{
+    background-color: lightgrey;
+    justify-content: center;
+    width: 25%;
+    height: 40%;
+    margin-top:15%;
+    border:2px solid darkolivegreen;
+    position: center;
+
+}
+h1
+{
+    text-align: center;
+}
+input
+{
+    margin-left: 20%;
+}
+#username-field
+{
+    height: 25px;
+    font-size: 14pt;
+}
+#password-field
+{
+
+    height: 25px;
+    font-size: 14pt;
+
+}
+
+#login-button
+{
+    height: 40px;
+    width: 80px;
+    font-size: 14pt;
+    font-weight: bold;
+}

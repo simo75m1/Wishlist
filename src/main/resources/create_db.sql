@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS wishwebapp;
 CREATE DATABASE wishwebapp;
 use wishwebapp;
-DROP TABLE IF EXISTS users, wishlists, wishes;
+DROP TABLE IF EXISTS user, wishlist, wish;
 CREATE TABLE `wishwebapp`.`users` (
                                       `user_ID` INT NOT NULL AUTO_INCREMENT,
                                       `username` VARCHAR(45) NOT NULL,
