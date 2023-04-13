@@ -1,5 +1,45 @@
+hr {
+    border:none;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid grey;
+    box-shadow: 0 20px 20px -20px #333;
+    margin: 0 0px auto 0px;
+}
+
+body
+{
+    overflow-x:hidden;
+}
+.title-box
+{
+    height:20vh;
+}
+.body-container
+{
+    border:1px solid black;
+    height:75vh;
+
+}
 .wishlist-box
 {
-    border:2px dotted red;
+    border:1px solid black;
+    border-radius:16px;
 
+}
+
+.create-box
+{
+    height:28%;
+    width:12%;
+    border:1px solid black;
+    border-radius:16px;
+    box-shadow: 5px 10px 5px grey;
+
+}
+#plus-icon
+{
+    height:90%;
+    width:90%;
+    margin: 5% 0% 0% 4%
 }

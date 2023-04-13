@@ -6,13 +6,20 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-    <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1>
-
+<div class="title-box">
+    <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1> <hr><br>
 </div>
-<div class="wishlist-box" th:each="wishlist : ${wishlists}">
-    <span th:text="${wishlist.getWishlistName}"> wishlist title</span>
-</div>
+<div class="body-container">
 
+       <div class="create-box">
+           <a href="/createList" >
+        <img id="plus-icon" th:src="@{/images/plus.png}" src="../static/images/plus.png" alt="plus-icon">
+           </a>
+        </div>
+    <br><br>
+    <div class="wishlist-box" th:each="wishlist : ${wishlists}">
+        <span th:text="${wishlist.getWishlistName}"> wishlist title</span>
+    </div>
+</div>
 </body>
 </html>
