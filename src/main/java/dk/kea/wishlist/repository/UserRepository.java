@@ -53,4 +53,30 @@ public class UserRepository
         return true;
     }
 
+    public int getUserID(String username)
+    {
+
+        int id = -1;
+
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            final String SQL_QUERY = "SELECT user_ID FROM wishwebapp.user WHERE username = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
+
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            id = resultSet.getInt("user_ID");
+
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not get user ID");
+        }
+        return id;
+    }
+
 }
