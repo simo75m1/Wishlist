@@ -12,7 +12,6 @@ import java.sql.SQLException;
 public class HomeController
 {
     private UserRepository userRepo;
-
     public HomeController(UserRepository userRepo)
     {
         this.userRepo = userRepo;
