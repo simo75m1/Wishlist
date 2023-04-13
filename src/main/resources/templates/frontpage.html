@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{../css/frontpage.css}" href="../static/css/frontpage.css">
     <title>Title</title>
 </head>
 <body>
+<div>
+    <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1>
+
+</div>
+<div class="wishlist-box" th:each="wishlist : ${wishlists}">
+    <span th:text="${wishlist.getWishlistName}"> wishlist title</span>
+</div>
 
 </body>
 </html>

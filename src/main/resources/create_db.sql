@@ -12,6 +12,7 @@ CREATE TABLE `wishwebapp`.`user` (
 CREATE TABLE `wishwebapp`.`wishlist` (
                                           `wishlist_ID` INT NOT NULL AUTO_INCREMENT,
                                           `user_ID` INT NOT NULL,
+                                          `wishlist_name` VARCHAR(45) NOT NULL,
                                           PRIMARY KEY (`wishlist_ID`),
                                           UNIQUE INDEX `wishlist_ID_UNIQUE` (`wishlist_ID` ASC) VISIBLE);
 CREATE TABLE `wishwebapp`.`wish` (
