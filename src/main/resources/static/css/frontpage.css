@@ -6,28 +6,21 @@ hr {
     box-shadow: 0 20px 20px -20px #333;
     margin: 0 0px auto 0px;
 }
-
-body
-{
-    overflow-x:hidden;
-}
 .title-box
 {
     height:20vh;
 }
+body
+{
+    overflow-x:hidden;
+}
+
 .body-container
 {
-    border:1px solid black;
+    box-shadow: inset 0 0 10px #333;
     height:75vh;
-
+    font-size:30px;
 }
-.wishlist-box
-{
-    border:1px solid black;
-    border-radius:16px;
-
-}
-
 .create-box
 {
     height:28%;
@@ -35,11 +28,52 @@ body
     border:1px solid black;
     border-radius:16px;
     box-shadow: 5px 10px 5px grey;
-
+    margin: 1% 0 0 1%;
+    float:left;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
 }
-#plus-icon
+.plus-icon
 {
-    height:90%;
-    width:90%;
-    margin: 5% 0% 0% 4%
+    height:100%;
+    width:100%;
+    margin: 1% 2% 0% -1%
+}
+
+.wishlist-box
+{
+    height:28%;
+    width:12%;
+    border:1px solid black;
+    border-radius:16px;
+    box-shadow: 5px 10px 5px grey;
+    float:left;
+    margin:1% 0 0 1%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+.wishlist-title
+{
+    z-index: 1;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-family: Calibri;
+}
+.wishlist-img
+{
+    z-index: 0;
+    height:100%;
+    width:100%;
+    margin: 0% 0% 0% 0%
+}
+
+.wishlist-title pre
+{
+    font-family: Calibri;
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create wishlist</title>
+    <link rel="stylesheet" th:href="@{../css/createlist.css}" href="../static/css/createlist.css">
+</head>
+<body>
+    <div id="create-background">
+    <img id="bg-img" th:src="@{/images/createlistbackground.png}" src="../static/images/createlistbackground.png" alt="blurred-background">
+        <div id="create-box">
+            <h1>Name your new wishlist</h1>
+            <form action="/createlist" method="post">
+                <br>
+                <input id="wishlistName" name="wishlistName" type="text" placeholder="Wishlist name">
+                <br><br>
+
+                <input id="create-button" type="submit" value="Create">
+            </form>
+            <br>
+            <a href="/"> <input type="submit" value="Back"></a>
+        </div>
+    </div>
+</body>
+</html>

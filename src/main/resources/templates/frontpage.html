@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{../css/frontpage.css}" href="../static/css/frontpage.css">
-    <title>Title</title>
+    <title>Home</title>
 </head>
 <body>
 <div class="title-box">
-    <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1> <hr><br>
+    <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1> <hr>
 </div>
+<h2>Your wishlists</h2>
 <div class="body-container">
 
        <div class="create-box">
-           <a href="/createList" >
-        <img id="plus-icon" th:src="@{/images/plus.png}" src="../static/images/plus.png" alt="plus-icon">
+           <a href="/createlist" >
+               <span class="wishlist-title"><pre>Add new</pre></span>
+        <img class="plus-icon" th:src="@{/images/plus.png}" src="../static/images/plus.png" alt="plus-icon">
            </a>
         </div>
-    <br><br>
+
     <div class="wishlist-box" th:each="wishlist : ${wishlists}">
-        <span th:text="${wishlist.getWishlistName}"> wishlist title</span>
+        <a href="/wishlist1" th:href="@{'/wishlist/'+${wishlist.getWishlistID}}">
+        <span class="wishlist-title" th:text="${wishlist.getWishlistName}">Wishlist title</span>
+            <img class="wishlist-img" th:src="@{/images/present.png}" src="../static/images/present.png" alt="present-icon">
+        </a>
     </div>
 </div>
 </body>

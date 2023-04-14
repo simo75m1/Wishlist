@@ -52,6 +52,26 @@ public class ListRepository
         return wlList;
     }
 
+    public void createList(Wishlist wishlist)
+    {
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            final String CREATE_QUERY = "INSERT INTO wishlist(user_ID, wishlist_name) VALUES(?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
+
+            preparedStatement.setInt(1, wishlist.getUser_ID());
+            preparedStatement.setString(2, wishlist.getWishlistName());
+
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not create new wishlist");
+        }
+
+    }
 
 
 }
