@@ -65,6 +65,7 @@ public class HomeController
     public String showWishList(@PathVariable("id") int listID, Model model, HttpSession session)
     {
         model.addAttribute("wishesList", wishRepo.getAllWishes(listID));
+        session.setAttribute("currentWishlist", listID);
         return "wishlist";
     }
 

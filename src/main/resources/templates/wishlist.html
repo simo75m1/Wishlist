@@ -20,8 +20,7 @@
             </a>
         </div>
 
-        <div class="table-names">
-
+        <div class="table-names" th:each="wish : ${wisheslist}">
             <div class="name-box">
                 <span th:text="${wish.getProductName}">Product name</span>
             </div>
@@ -57,7 +56,5 @@
     </div>
 
 </div>
-
-
 </body>
 </html>

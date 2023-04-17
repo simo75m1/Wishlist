@@ -57,7 +57,7 @@ public class ListRepository
         try
         {
             Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
-            final String CREATE_QUERY = "INSERT INTO wishlist(user_ID, wishlist_name) VALUES(?, ?)";
+            final String CREATE_QUERY = "INSERT INTO wishwebapp.wishlist(user_ID, wishlist_name) VALUES(?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
             preparedStatement.setInt(1, wishlist.getUser_ID());
