@@ -8,8 +8,10 @@
 <body>
 <div>
     <div class="title-box">
-        <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1> <hr>
+        <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1>
+        <hr>
     </div>
+    <a href="/" > <input  type="submit" value="Back to profile"> </a>
     <h2>Your wishes</h2>
     <div class="body-container">
 
@@ -20,21 +22,21 @@
             </a>
         </div>
 
-        <div class="table-names" th:each="wish : ${wisheslist}">
+        <div class="table-names">
             <div class="name-box">
-                <span th:text="${wish.getProductName}">Product name</span>
+                <span>Product name</span>
             </div>
             <div class="price-box">
-                <span th:text="${wish.getProductPrice}">Price</span>
+                <span>Price</span>
             </div>
-            <div class="link-box" >
-                <span th:text="${wish.getProductLink}">Link</span>
+            <div class="link-box">
+                <span>Link</span>
             </div>
             <div class="edit-box">
                 <span>Edit</span>
             </div>
         </div>
-        <div class="wish-box" th:each="wish : ${wisheslist}">
+        <div class="wish-box" th:each="wish : ${wishesList}">
                <div class="wish-title">
                    <span th:text="${wish.getProductName}">*Product from database*</span>
                </div>

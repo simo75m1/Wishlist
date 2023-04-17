@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{../css/createwish.css}" href="../static/css/createwish.css">
 </head>
 <body>
-
+    <div id="create-background">
+        <img id="bg-img" th:src="@{/images/createwishbackground.png}" src="../static/images/createwishbackground.png" alt="blurred-background">
+        <div id="create-box">
+            <h1>Add wish</h1>
+            <form action="/createwish" method="post">
+                <input id="wishName" name="wishName" type="text" placeholder="Product name">
+                <br><br>
+                <input id="wishPrice" name="wishPrice" type="text" placeholder="Price">
+                <br><br>
+                <input id="wishLink" name="wishLink" type="text" placeholder="Product link">
+                <br><br>
+                <input id="create-button" type="submit" value="Create">
+            </form>
+            <br>
+            <input type="submit" value="Back" onclick="history.back()">
+        </div>
+    </div>
 </body>
 </html>

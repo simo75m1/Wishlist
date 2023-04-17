@@ -21,6 +21,7 @@ body
     height:auto;
     font-size:30px;
     padding-top:1px;
+    padding-bottom:30px;
 }
 .create-box
 {
@@ -29,7 +30,7 @@ body
     border:1px solid black;
     border-radius:16px;
     box-shadow: 5px 10px 5px grey;
-    margin: 1% 0 0 1%;
+    margin: 1% 0 0 44%;
     position: relative;
     text-align: center;
     overflow: hidden;
@@ -58,7 +59,6 @@ body
     display:flex;
     height:7%;
     width:97.5%;
-    border:1px solid black;
     border-radius:16px;
     box-shadow: 5px 10px 5px grey;
     margin:1% 0 0 1%;
@@ -70,25 +70,21 @@ body
 
 .name-box
 {
-    border:1px dotted green;
     width:59%;
 }
 
 .price-box
 {
-    border:1px dotted blue;
     width:15%;
 }
 .link-box
 {
-    border:1px dotted purple;
     width:20%;
 }
 .edit-box
 {
     height:100%;
     width:9%;
-    border:2px dotted red;
 
 }
 
@@ -109,25 +105,24 @@ body
 
 .wish-title
 {
-    border:1px dotted green;
+    margin-top:20px;
     width:165%;
 }
 .wish-price
 {
-    border:1px dotted blue;
+    margin-top:20px;
     width:50%;
     margin-right:2%;
 }
 .wish-link
 {
-    border:1px dotted purple;
+    margin-top:20px;
     width:40%;
 
 }
 .img-wish-box{
     height:100%;
     width:59%;
-    border:2px dotted red;
     margin-left:25%;
 
 }
