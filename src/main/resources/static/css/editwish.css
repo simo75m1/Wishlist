@@ -3,28 +3,28 @@ body
     font-family: Calibri;
     overflow:hidden;
 }
-#create-background
+#editwish-background
 {
 
     justify-content: center;
-    height:700px;
+    height:800px;
 }
 
 #bg-img
 {
     position:absolute;
-    height:100vh;
-    width:98vw;
+    height:100%;
+    width:100%;
     filter: blur(3px);
     -webkit-filter: blur(3px);
 }
 
-#create-box
+#edit-box
 {
     background-color: lightgrey;
     justify-content: center;
     width: 25%;
-    height: 35%;
+    height: 37%;
     margin-top:15%;
     margin-left: 37%;
     border:2px solid darkolivegreen;
@@ -41,16 +41,20 @@ h1
 input
 {
     margin-left: 20%;
-}
-#wishlistName
-{
-    height: 25px;
-    font-size: 14pt;
+
 }
 
-#create-button
+#edit-button
 {
-    height: 40px;
+    height: 30px;
+    width: 80px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+#delete-button
+{
+    height: 30px;
     width: 80px;
     font-size: 14pt;
     font-weight: bold;
