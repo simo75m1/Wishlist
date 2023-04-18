@@ -3,13 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{../css/wishlist.css}" href="../static/css/wishlist.css">
-    <title>Title</title>
+    <title>Wishlist</title>
 </head>
 <body>
 <div>
+    <div class="title-box">
+        <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1>
+        <hr>
+    </div>
+    <a href="/" > <input  type="submit" value="Back to profile"> </a>
+    <h2>Your wishes</h2>
+    <div class="body-container">
+
+        <div class="create-box">
+            <a href="/createwish" >
+                <span class="create-title"><pre>Add new</pre></span>
+                <img class="plus-icon" th:src="@{/images/plus.png}" src="../static/images/plus.png" alt="plus-icon">
+            </a>
+        </div>
+        <div class="table-names">
+            <div class="name-box">
+                <span>Product name</span>
+            </div>
+            <div class="price-box">
+                <span>Price</span>
+            </div>
+            <div class="link-box">
+                <span>Link</span>
+            </div>
+            <div class="edit-box">
+                <span>Edit</span>
+            </div>
+        </div>
+        <div class="wish-box" th:each="wish : ${wishesList}">
+               <div class="wish-title">
+                   <span th:text="${wish.getProductName}">*Product from database*</span>
+               </div>
+                <div class="wish-price">
+                    <span th:text="${wish.getProductPrice}">*Product price*</span>
+                </div>
+                <div class="wish-link" >
+                    <a href="th:text='${wish.getProductLink}'">
+                        <span th:text="${wish.getProductLink}">*Product Link*</span>
+                    </a>
+                </div>
+            <a href="/wish1" th:href="@{'/wish/'+${wish.getWishID}}">
+                <div class="img-wish-box">
+                    <img id="edit-img" th:src="@{/images/edit.png}" src="../static/images/edit.png" alt="edit img">
+                </div>
+            </a>
+        </div>
+
+    </div>
 
 </div>
-
-
 </body>
 </html>

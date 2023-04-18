@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <span class="wish-reserved" th:if="${wish.getReservedStatus == false}">Ikke reserveret</span>
+    <span class="wish-reserved" th:unless="${wish.getReservedStatus == false}"><p style="color:red;">Reserveret</p></span>
+</div>
+
+</body>
+</html>

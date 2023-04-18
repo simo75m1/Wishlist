@@ -1,5 +1,6 @@
 package dk.kea.wishlist.controller;
 
+import dk.kea.wishlist.model.Wish;
 import dk.kea.wishlist.model.Wishlist;
 import dk.kea.wishlist.repository.ListRepository;
 import dk.kea.wishlist.repository.UserRepository;
@@ -65,6 +66,7 @@ public class HomeController
     public String showWishList(@PathVariable("id") int listID, Model model, HttpSession session)
     {
         model.addAttribute("wishesList", wishRepo.getAllWishes(listID));
+        session.setAttribute("currentWishlist", listID);
         return "wishlist";
     }
 
@@ -87,4 +89,18 @@ public class HomeController
 
         return "redirect:/";
     }
+    @GetMapping("/createwish")
+    public String showCreateWish(HttpSession session)
+    {
+        return "createwish";
+    }
+    @PostMapping("/createwish")
+    public String createWish(@RequestParam("wishName")String wishName, @RequestParam("wishPrice")double wishPrice, @RequestParam("wishLink")String wishLink, HttpSession session)
+    {
+        int tempListID = (int) session.getAttribute("currentWishlist");
+        Wish tempWish = new Wish(tempListID, wishName, wishPrice, wishLink);
+        wishRepo.createWish(tempWish);
+        return "redirect:/wishlist/"+tempListID;
+    }
+
 }

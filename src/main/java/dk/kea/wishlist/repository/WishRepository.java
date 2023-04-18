@@ -6,10 +6,7 @@ import dk.kea.wishlist.utility.ConnectionManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +29,7 @@ public class WishRepository
         {
             Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
-            final String SQL_QUERY = "SELECT * FROM wishwebapp.wish WHERE wishlist_ID = "+wishlistID;
+            final String SQL_QUERY = "SELECT wish_ID, product_name, product_price, product_link, reserved_status FROM wishwebapp.wish WHERE wishlist_ID = "+wishlistID;
 
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
@@ -65,4 +62,28 @@ public class WishRepository
         }
         return wishesList;
     }
+
+    public void createWish(Wish wish)
+    {
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            final String CREATE_QUERY = "INSERT INTO wishwebapp.wish(wishlist_ID, product_name, product_price, product_link) VALUES(?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
+
+            preparedStatement.setInt(1, wish.getWishlist_ID());
+            preparedStatement.setString(2, wish.getProductName());
+            preparedStatement.setDouble(3, wish.getProductPrice());
+            preparedStatement.setString(4, wish.getProductLink());
+
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not create new wish");
+        }
+
+    }
+
 }

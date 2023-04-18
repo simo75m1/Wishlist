@@ -20,11 +20,12 @@
         </div>
 
     <div class="wishlist-box" th:each="wishlist : ${wishlists}">
-        <a href="/wishlist1" th:href="@{'/wishlist/'+${wishlist.getWishlistID}}">
+        <a href="/wishlist" th:href="@{'/wishlist/'+${wishlist.getWishlistID}}">
         <span class="wishlist-title" th:text="${wishlist.getWishlistName}">Wishlist title</span>
             <img class="wishlist-img" th:src="@{/images/present.png}" src="../static/images/present.png" alt="present-icon">
         </a>
     </div>
+
 </div>
 </body>
 </html>

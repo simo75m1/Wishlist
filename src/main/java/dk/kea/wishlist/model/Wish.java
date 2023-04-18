@@ -3,6 +3,7 @@ package dk.kea.wishlist.model;
 public class Wish
 {
     private int wishID;
+    private int wishlist_ID;
     private String productName;
     private double productPrice;
     private String productLink;
@@ -17,11 +18,24 @@ public class Wish
         this.reservedStatus = reservedStatus;
     }
 
-    public Wish(String productName, double productPrice, String productLink)
+    public Wish(int wishlist_ID, String productName, double productPrice, String productLink)
     {
+        this.wishlist_ID = wishlist_ID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productLink = productLink;
+    }
+
+    public Wish(){}
+
+    public int getWishlist_ID()
+    {
+        return wishlist_ID;
+    }
+
+    public void setWishlist_ID(int wishlist_ID)
+    {
+        this.wishlist_ID = wishlist_ID;
     }
 
     public int getWishID()
