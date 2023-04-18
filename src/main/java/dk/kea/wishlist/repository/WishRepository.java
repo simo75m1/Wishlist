@@ -147,7 +147,7 @@ public class WishRepository
         {
             Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
-            final String DELETE_QUERY = "DELETE FROM wish WHERE wish_ID ="+wishID;
+            final String DELETE_QUERY = "DELETE FROM wishwebapp.wish WHERE wish_ID ="+wishID;
 
             statement.executeUpdate(DELETE_QUERY);
         }
