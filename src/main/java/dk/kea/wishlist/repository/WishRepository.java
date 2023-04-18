@@ -62,6 +62,41 @@ public class WishRepository
         }
         return wishesList;
     }
+    public Wish findWishByID(int wishID)
+    {
+        Wish wish = new Wish();
+        wish.setWishID(wishID);
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            final String SQL_QUERY = "SELECT product_name, product_price, product_link, reserved_status FROM wishwebapp.wish WHERE wish_ID = "+wishID;
+
+            ResultSet resultSet = statement.executeQuery(SQL_QUERY);
+
+            while(resultSet.next())
+            {
+                wish.setProductName(resultSet.getString(1));
+                wish.setProductPrice(resultSet.getDouble(2));
+                wish.setProductLink(resultSet.getString(3));
+                if(resultSet.getInt(4) == 0)
+                {
+                    wish.setReservedStatus(false);
+                }
+                else
+                {
+                    wish.setReservedStatus(true);
+                }
+            }
+
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("could not find wish by ID");
+        }
+        return wish;
+    }
 
     public void createWish(Wish wish)
     {
@@ -85,5 +120,41 @@ public class WishRepository
         }
 
     }
+    public void editWish(Wish wish)
+    {
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            final String UPDATE_QUERY = "UPDATE wishwebapp.wish SET product_name=?, product_price=?,product_link=? WHERE wish_ID = "+wish.getWishID();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY);
 
+            preparedStatement.setString(1, wish.getProductName());
+            preparedStatement.setDouble(2, wish.getProductPrice());
+            preparedStatement.setString(3, wish.getProductLink());
+
+            preparedStatement.executeUpdate();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("could not update Wish");
+        }
+    }
+
+    public void deleteWish(int wishID)
+    {
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            final String DELETE_QUERY = "DELETE FROM wish WHERE wish_ID ="+wishID;
+
+            statement.executeUpdate(DELETE_QUERY);
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not delete wish");
+        }
+    }
 }

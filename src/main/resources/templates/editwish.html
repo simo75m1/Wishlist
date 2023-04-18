@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Wish</title>
+  <link rel="stylesheet" th:href="@{../css/editwish.css}" href="../static/css/editwish.css">
+</head>
+<body>
+<div id="editwish-background">
+  <img id="bg-img" th:src="@{/images/editwishbackground.png}" src="../static/images/editewishbackground.png" alt="blurred-background">
+  <div id="edit-box">
+    <h1>Add wish</h1>
+    <form action="/editwish" method="post">
+      <input id="wishID" name="wishID" type="hidden"  th:value="${wish.getWishID()}">
+
+      <input id="wishName" name="wishName" type="text" placeholder="Product name" th:value="${wish.getProductName()}">
+      <br><br>
+      <input id="wishPrice" name="wishPrice" type="text" placeholder="Price" th:value="${wish.getProductPrice()}">
+      <br><br>
+      <input id="wishLink" name="wishLink" type="text" placeholder="Product link" th:value="${wish.getProductLink()}">
+      <br><br>
+      <input id="edit-button" type="submit" value="Update">
+    </form>
+    <a th:href="@{'/deletewish/' + ${wish.getWishID()}}" href="/delete"><input id="delete-button" type="submit" value="Delete"> </a>
+    <br>
+    <input type="submit" value="Back" onclick="history.back()">
+  </div>
+</div>
+</body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.templateparser.markup.HTMLTemplateParser;
 
 import java.sql.SQLException;
 
@@ -100,6 +101,35 @@ public class HomeController
         int tempListID = (int) session.getAttribute("currentWishlist");
         Wish tempWish = new Wish(tempListID, wishName, wishPrice, wishLink);
         wishRepo.createWish(tempWish);
+        return "redirect:/wishlist/"+tempListID;
+    }
+
+    @GetMapping("/wish/{id}")
+    public String showEditWish(@PathVariable("id")int wishID, HttpSession session, Model model)
+    {
+        Wish editWish = wishRepo.findWishByID(wishID);
+        model.addAttribute("wish", editWish);
+
+        return "editwish";
+    }
+
+    @PostMapping("/editwish")
+    public String editWish(@RequestParam("wishID")int tempWishID, @RequestParam("wishName")String editName,@RequestParam("wishPrice")double editPrice, @RequestParam("wishLink")String editLink, HttpSession session)
+    {
+        int tempListID = (int) session.getAttribute("currentWishlist");
+        Wish tempWish = new Wish(tempListID, editName, editPrice, editLink);
+        tempWish.setWishID(tempWishID);
+        wishRepo.editWish(tempWish);
+
+        return "redirect:/wishlist/"+tempListID;
+    }
+
+    @GetMapping("/deletewish/{id}")
+    public String deleteWish(@PathVariable("id")int deleteID, HttpSession session)
+    {
+        wishRepo.deleteWish(deleteID);
+        int tempListID = (int) session.getAttribute("currentWishlist");
+
         return "redirect:/wishlist/"+tempListID;
     }
 
