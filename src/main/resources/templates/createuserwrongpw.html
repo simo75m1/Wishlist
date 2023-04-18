@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{../css/createuser.css}" href="../static/css/createuser.css">
+  <title>Create new login</title>
+</head>
+<body>
+<div id="login-background">
+  <div id="login-box">
+    <h1>Welcome!</h1>
+    <form action="/createuser" method="post">
+      <br>
+      <input id="username-field" name="newusername" type="text" placeholder="Choose username">
+      <br><br>
+      <input id="password-field" name="newpassword" type="password" placeholder="Choose password">
+      <br><br>
+      <input id="password-field2" name="newpassword2" type="password" placeholder="Confirm password">
+      <p>Passwords did not match. Please try again</p>
+      <input id="create-button" type="submit" value="Create">
+    </form>
+    <br>
+    <a href="/login"> <input id="back-login" type="submit" value="Back"> </a>
+  </div>
+</div>
+</body>
+</html>
