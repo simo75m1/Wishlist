@@ -62,6 +62,38 @@ public class HomeController
         }
         return "login";
     }
+    @GetMapping("/createuser")
+    public String showCreateLogin()
+    {
+        return "createuser";
+    }
+
+    @GetMapping("/createuserwrongusername")
+    public String showCreateWrongUsername()
+    {
+        return "createuserwrongusername";
+    }
+
+    @GetMapping("/createuserwrongpw")
+    public String showCreateWrongPw()
+    {
+        return "createuserwrongpw";
+    }
+
+    @PostMapping("/createuser")
+    public String createLogin(@RequestParam(name="newusername")String newUsername, @RequestParam(name="newpassword")String newPassword, @RequestParam(name="newpassword2")String newPassword2)
+    {
+        if(newPassword.equals(newPassword2))
+        {
+            if(userRepo.createUser(newUsername, newPassword))
+            {
+                return "redirect:/login";
+            }
+            return "redirect:/createuserwrongusername";
+        }
+        return "redirect:/createuserwrongpw";
+
+    }
 
     @GetMapping("/wishlist/{id}")
     public String showWishList(@PathVariable("id") int listID, Model model, HttpSession session)
