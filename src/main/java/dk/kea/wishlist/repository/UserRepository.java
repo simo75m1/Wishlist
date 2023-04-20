@@ -128,7 +128,7 @@ public class UserRepository
         catch (SQLException e)
         {
             e.printStackTrace();
-            System.out.println("Could not create new wish");
+            System.out.println("Could not create new user");
         }
         return false;
     }
