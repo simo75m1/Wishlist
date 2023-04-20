@@ -8,7 +8,14 @@
 <body>
 <div>
     <div class="title-box">
-        <h1> Welcome back <span th:text="${session.username}">USERNAME</span> </h1>
+        <h1>
+            <span
+                    th:text="${session.currentlistname}">Wishlist name
+            </span>
+            <a href="/editwishlist" th:href="@{'/editwishlist/'+${session.currentWishlist}}">
+                <img id="edit-title" th:src="@{/images/edit.png}" src="../static/images/edit.png" alt="edit img">
+            </a>
+        </h1>
         <hr>
     </div>
     <a href="/" > <input  type="submit" value="Back to profile"> </a>

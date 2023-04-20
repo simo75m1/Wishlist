@@ -1,5 +1,6 @@
 package dk.kea.wishlist.repository;
 
+import dk.kea.wishlist.model.Wish;
 import dk.kea.wishlist.model.Wishlist;
 import dk.kea.wishlist.utility.ConnectionManager;
 import org.springframework.beans.factory.annotation.Value;
