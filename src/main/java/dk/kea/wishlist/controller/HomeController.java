@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.thymeleaf.templateparser.markup.HTMLTemplateParser;
 
 import java.sql.SQLException;
 
@@ -96,7 +95,7 @@ public class HomeController
     }
 
     @GetMapping("/wishlist/{id}")
-    public String showWishList(@PathVariable("id") int listID, Model model, HttpSession session)
+    public String showWishlist(@PathVariable("id") int listID, Model model, HttpSession session)
     {
         model.addAttribute("wishesList", wishRepo.getAllWishes(listID));
         session.setAttribute("currentWishlist", listID);
