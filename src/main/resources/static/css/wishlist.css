@@ -13,6 +13,7 @@ hr {
 body
 {
     overflow-x:hidden;
+    font-family: Calibri;
 }
 
 .body-container
@@ -136,4 +137,9 @@ body
 .create-title pre
 {
     font-family: Calibri;
+}
+#delete-button
+{
+    margin-top:60px;
+    float: right;
 }

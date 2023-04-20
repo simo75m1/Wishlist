@@ -164,5 +164,12 @@ public class HomeController
 
         return "redirect:/wishlist/"+tempListID;
     }
+    @GetMapping("/deletelist/{id}")
+    public String deleteList(@PathVariable("id")int deleteID, HttpSession session)
+    {
+        listRepo.deleteList(deleteID);
+
+        return "redirect:/";
+    }
 
 }

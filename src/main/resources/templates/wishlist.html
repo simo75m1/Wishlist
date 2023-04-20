@@ -12,7 +12,9 @@
         <hr>
     </div>
     <a href="/" > <input  type="submit" value="Back to profile"> </a>
+    <a th:href="@{'/deletelist/' + ${session.currentWishlist}}" href="/delete"><input id="delete-button" type="submit" value="Delete wishlist"> </a>
     <h2>Your wishes</h2>
+
     <div class="body-container">
 
         <div class="create-box">

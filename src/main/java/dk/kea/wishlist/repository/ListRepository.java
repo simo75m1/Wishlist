@@ -73,5 +73,22 @@ public class ListRepository
 
     }
 
+    public void deleteList(int wishlistID)
+    {
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            final String DELETEWISH_QUERY = "DELETE FROM wishwebapp.wish WHERE wishlist_ID ="+wishlistID;
+            final String DELETELIST_QUERY = "DELETE FROM wishwebapp.wishlist WHERE wishlist_ID ="+wishlistID;
+            statement.executeUpdate(DELETEWISH_QUERY);
+            statement.executeUpdate(DELETELIST_QUERY);
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not delete wishlist");
+        }
+    }
 
 }
