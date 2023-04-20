@@ -143,3 +143,8 @@ body
     margin-top:60px;
     float: right;
 }
+#edit-title
+{
+    height: 40px;
+    width: auto;
+}

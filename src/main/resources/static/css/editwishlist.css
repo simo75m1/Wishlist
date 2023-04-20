@@ -1,0 +1,65 @@
+body
+{
+    font-family: Calibri;
+    overflow:hidden;
+}
+#editwish-background
+{
+
+    justify-content: center;
+    height:800px;
+}
+
+#bg-img
+{
+    position:absolute;
+    height:100%;
+    width:100%;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+
+#edit-box
+{
+    background-color: lightgrey;
+    justify-content: center;
+    width: 25%;
+    height: 30%;
+    margin-top:15%;
+    margin-left: 37%;
+    border:2px solid darkolivegreen;
+    position: absolute;
+    z-index: 1;
+    filter: none;
+    -webkit-filter: none;
+
+}
+h1
+{
+    text-align: center;
+}
+input
+{
+    margin-left: 20%;
+}
+
+#list-name
+{
+
+    font-size: 14pt;
+}
+#edit-button
+{
+    height: 30px;
+    width: 80px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+#delete-button
+{
+    height: 30px;
+    width: 80px;
+    font-size: 14pt;
+    font-weight: bold;
+}

@@ -24,16 +24,16 @@ public class ListRepository
 
     public List<Wishlist> getAllLists(int userID)
     {
-        List <Wishlist> wlList = new ArrayList<>();
+        List<Wishlist> wlList = new ArrayList<>();
         try
         {
             Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
-            final String SQL_QUERY = "SELECT wishlist_ID, wishlist_name FROM wishwebapp.wishlist WHERE user_ID= "+userID;
+            final String SQL_QUERY = "SELECT wishlist_ID, wishlist_name FROM wishwebapp.wishlist WHERE user_ID= " + userID;
 
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
-            while(resultSet.next())
+            while (resultSet.next())
             {
                 int wishlistID = resultSet.getInt(1);
                 String wishlistName = resultSet.getString(2);
@@ -43,8 +43,7 @@ public class ListRepository
                 System.out.println("Found " + wishlist);
             }
 
-        }
-        catch (SQLException e)
+        } catch (SQLException e)
         {
             e.printStackTrace();
             System.out.println("Could not get lists");
@@ -64,8 +63,7 @@ public class ListRepository
             preparedStatement.setString(2, wishlist.getWishlistName());
 
             preparedStatement.executeUpdate();
-        }
-        catch (SQLException e)
+        } catch (SQLException e)
         {
             e.printStackTrace();
             System.out.println("Could not create new wishlist");
@@ -79,16 +77,62 @@ public class ListRepository
         {
             Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
-            final String DELETEWISH_QUERY = "DELETE FROM wishwebapp.wish WHERE wishlist_ID ="+wishlistID;
-            final String DELETELIST_QUERY = "DELETE FROM wishwebapp.wishlist WHERE wishlist_ID ="+wishlistID;
+            final String DELETEWISH_QUERY = "DELETE FROM wishwebapp.wish WHERE wishlist_ID =" + wishlistID;
+            final String DELETELIST_QUERY = "DELETE FROM wishwebapp.wishlist WHERE wishlist_ID =" + wishlistID;
             statement.executeUpdate(DELETEWISH_QUERY);
             statement.executeUpdate(DELETELIST_QUERY);
-        }
-        catch(SQLException e)
+        } catch (SQLException e)
         {
             e.printStackTrace();
             System.out.println("Could not delete wishlist");
         }
     }
 
+    public String getListNameByID(int listID)
+    {
+        String listName = "no name";
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            final String SQL_QUERY = "SELECT wishlist_name FROM wishwebapp.wishlist WHERE wishlist_ID =" + listID;
+            ResultSet resultSet = statement.executeQuery(SQL_QUERY);
+            resultSet.next();
+            listName = resultSet.getString(1);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not get list name by id");
+        }
+
+        return listName;
+    }
+
+    public void editWishlistName(Wishlist wishlist)
+    {
+        try
+        {
+            Connection connection = ConnectionManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+            final String SQL_QUERY = "UPDATE wishwebapp.wishlist SET wishlist_name = ? WHERE wishlist_ID =" + wishlist.getWishlistID();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
+            String tempName = wishlist.getWishlistName();
+            preparedStatement.setString(1, tempName);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not edit wishlist name");
+        }
+
+    }
+
+    public Wishlist findWishlistByID(int listID)
+    {
+        Wishlist findList = new Wishlist();
+
+        String tempName = getListNameByID(listID);
+        findList.setWishlistName(tempName);
+
+        return findList;
+    }
 }

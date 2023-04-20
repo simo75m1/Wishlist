@@ -100,7 +100,25 @@ public class HomeController
     {
         model.addAttribute("wishesList", wishRepo.getAllWishes(listID));
         session.setAttribute("currentWishlist", listID);
+        String tempname = listRepo.getListNameByID(listID);
+        session.setAttribute("currentlistname", tempname);
         return "wishlist";
+    }
+
+    @GetMapping("/editwishlist/{id}")
+    public String showEditWishlist(@PathVariable("id")int wishlistID, Model model)
+    {
+        model.addAttribute("wishlist", listRepo.findWishlistByID(wishlistID));
+        return "editwishlist";
+    }
+
+    @PostMapping("/editwishlist")
+    public String editWishlist(@RequestParam("wishlistName") String tempName, HttpSession session)
+    {
+        int tempListID = (int) session.getAttribute("currentWishlist");
+        Wishlist tempList = new Wishlist(tempListID, tempName);
+        listRepo.editWishlistName(tempList);
+        return "redirect:/wishlist/"+tempListID;
     }
 
     @GetMapping("/createlist")
